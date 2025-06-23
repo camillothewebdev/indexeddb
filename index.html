@@ -37,7 +37,7 @@
     </style>
 </head>
 <body>
-    <h1>Teste d'espace</h1>
+    <h1>Teste de stockage</h1>
 
     <div id="storageInfo">
         Chargement des informations de stockage...
@@ -53,7 +53,7 @@
                 if ('storage' in navigator && 'estimate' in navigator.storage) {
                     const quota = await navigator.storage.estimate();
                     const totalGB = (quota.quota / (1024 * 1024 * 1024)).toFixed(0);
-                    document.getElementById('storageInfo').textContent = `Espace de stockage total disponible : ${totalGB} Go`;
+                    document.getElementById('storageInfo').textContent = `Espace disponible : ${totalGB} Gb`;
                 } else {
                     document.getElementById('storageInfo').textContent = "L'estimation du stockage n'est pas prise en charge par ce navigateur.";
                 }
