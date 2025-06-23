@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage Estimate</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        #storageInfo {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-size: 1.2em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="storageInfo">
+        Loading storage information...
+    </div>
+
+    <script>
+        async function displayStorage() {
+            try {
+                if ('storage' in navigator && 'estimate' in navigator.storage) {
+                    const quota = await navigator.storage.estimate();
+                    const totalGB = (quota.quota / (1024 * 1024 * 1024)).toFixed(0);
+                    document.getElementById('storageInfo').textContent = `Total Storage Available: ${totalGB} GB`;
+                } else {
+                    document.getElementById('storageInfo').textContent = "Storage estimation not supported in this browser.";
+                }
+            } catch (error) {
+                document.getElementById('storageInfo').textContent = `Error getting storage info: ${error.message}`;
+                console.error("Error getting storage estimate:", error);
+            }
+        }
+
+        displayStorage();
+    </script>
+</body>
+</html>
