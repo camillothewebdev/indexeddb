@@ -55,11 +55,10 @@
                     const totalGB = (quota.quota / (1024 * 1024 * 1024)).toFixed(0);
                     document.getElementById('storageInfo').textContent = `Stockage disponible : ${totalGB} Gb`;
                 } else {
-                    document.getElementById('storageInfo').textContent = "L'estimation du stockage n'est pas prise en charge par ce navigateur.";
+                    document.getElementById('storageInfo').textContent = "Stockage illimitée.";
                 }
             } catch (error) {
-                document.getElementById('storageInfo').textContent = `Erreur lors de l'obtention des informations de stockage : ${error.message}`;
-                console.error("Erreur lors de l'estimation du stockage :", error);
+                document.getElementById('storageInfo').textContent = `Aucun stockage disponible`;
             }
         }
 
