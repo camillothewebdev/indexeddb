@@ -1,34 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Storage Estimate</title>
+    <title>Teste d'espace</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             display: flex;
+            flex-direction: column; /* Changed to column to stack elements */
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            background-color: #f0f0f0;
-            color: #333;
+            background-color: #1a1a1a; /* Dark background */
+            color: #e0e0e0; /* Light text color */
+        }
+        h1 {
+            color: #4CAF50; /* Green heading for contrast */
+            margin-bottom: 30px;
         }
         #storageInfo {
             padding: 20px;
-            border: 1px solid #ccc;
+            border: 1px solid #444; /* Darker border */
             border-radius: 8px;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background-color: #333; /* Darker background for the box */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
             font-size: 1.2em;
             text-align: center;
+            margin-bottom: 20px; /* Space between info box and footer */
+        }
+        .footer {
+            font-size: 0.8em;
+            color: #888;
         }
     </style>
 </head>
 <body>
+    <h1>Teste d'espace</h1>
+
     <div id="storageInfo">
-        Loading storage information...
+        Chargement des informations de stockage...
+    </div>
+
+    <div class="footer">
+        Crée par CONGOSOFT
     </div>
 
     <script>
@@ -37,13 +53,13 @@
                 if ('storage' in navigator && 'estimate' in navigator.storage) {
                     const quota = await navigator.storage.estimate();
                     const totalGB = (quota.quota / (1024 * 1024 * 1024)).toFixed(0);
-                    document.getElementById('storageInfo').textContent = `Total Storage Available: ${totalGB} GB`;
+                    document.getElementById('storageInfo').textContent = `Espace de stockage total disponible : ${totalGB} Go`;
                 } else {
-                    document.getElementById('storageInfo').textContent = "Storage estimation not supported in this browser.";
+                    document.getElementById('storageInfo').textContent = "L'estimation du stockage n'est pas prise en charge par ce navigateur.";
                 }
             } catch (error) {
-                document.getElementById('storageInfo').textContent = `Error getting storage info: ${error.message}`;
-                console.error("Error getting storage estimate:", error);
+                document.getElementById('storageInfo').textContent = `Erreur lors de l'obtention des informations de stockage : ${error.message}`;
+                console.error("Erreur lors de l'estimation du stockage :", error);
             }
         }
 
